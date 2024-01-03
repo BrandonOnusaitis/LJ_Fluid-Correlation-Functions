@@ -60,9 +60,9 @@ Per MPI rank memory allocation (min/avg/max) = 4.212 | 4.212 | 4.212 Mbytes
        130   0             -6.3533983      0             -6.3533983     -2.695701     
        140   0             -6.3707212      0             -6.3707212     -2.5997594    
        143   0             -6.3737729      0             -6.3737729     -2.6325096    
-Loop time of 0.0384284 on 1 procs for 143 steps with 108 atoms
+Loop time of 0.0374651 on 1 procs for 143 steps with 108 atoms
 
-84.5% CPU use with 1 MPI tasks x 1 OpenMP threads
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
 
 Minimization stats:
   Stopping criterion = energy tolerance
@@ -76,12 +76,12 @@ Minimization stats:
 MPI task timing breakdown:
 Section |  min time  |  avg time  |  max time  |%varavg| %total
 ---------------------------------------------------------------
-Pair    | 0.026723   | 0.026723   | 0.026723   |   0.0 | 69.54
-Neigh   | 0.0086701  | 0.0086701  | 0.0086701  |   0.0 | 22.56
-Comm    | 0.0017885  | 0.0017885  | 0.0017885  |   0.0 |  4.65
-Output  | 9.8514e-05 | 9.8514e-05 | 9.8514e-05 |   0.0 |  0.26
+Pair    | 0.026001   | 0.026001   | 0.026001   |   0.0 | 69.40
+Neigh   | 0.0085352  | 0.0085352  | 0.0085352  |   0.0 | 22.78
+Comm    | 0.0017051  | 0.0017051  | 0.0017051  |   0.0 |  4.55
+Output  | 0.00010587 | 0.00010587 | 0.00010587 |   0.0 |  0.28
 Modify  | 0          | 0          | 0          |   0.0 |  0.00
-Other   |            | 0.001148   |            |       |  2.99
+Other   |            | 0.001118   |            |       |  2.98
 
 Nlocal:            108 ave         108 max         108 min
 Histogram: 1 0 0 0 0 0 0 0 0 0
@@ -94,6 +94,9 @@ Total # of neighbors = 3711
 Ave neighs/atom = 34.361111
 Neighbor list builds = 44
 Dangerous builds = 0
+	write_data *.data
+System init for write_data ...
+Generated 0 of 0 mixed pair_coeff terms from geometric mixing rule
 
 #4 stopping criteria in minimize
 # (1) change in energy between two iterations is less than 1.0e-4
@@ -106,7 +109,7 @@ Dangerous builds = 0
 # 4) Visualization
 thermo 10 #since thermo called twice, new value is 1000
 variable kinetic_energy equal ke #assigns variable "kinetic_energy" equal to the kinetic energy of the system
-dump mydmp all atom 10 dump.lammpstrj
+dump mydmp all custom 10 dump.lammpstrj id type x y z
 variable potential_energy equal pe
 variable volume equal vol
 fix myat1 all ave/time 1 1 1 v_kinetic_energy v_potential_energy v_volume file energy.dat #prints values in energy.dat
@@ -221,20 +224,20 @@ Per MPI rank memory allocation (min/avg/max) = 3.087 | 3.087 | 3.087 Mbytes
       1130   0.36943892    -5.6579772      0             -5.1089499     -1.5382384    
       1140   0.38069373    -5.6719797      0             -5.1062265     -1.5495467    
       1143   0.3854949     -5.6794162      0             -5.106528      -1.5747143    
-Loop time of 0.0776167 on 1 procs for 1000 steps with 108 atoms
+Loop time of 0.0929851 on 1 procs for 1000 steps with 108 atoms
 
-Performance: 5565810.648 tau/day, 12883.821 timesteps/s
-85.7% CPU use with 1 MPI tasks x 1 OpenMP threads
+Performance: 4645905.534 tau/day, 10754.411 timesteps/s
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
 
 MPI task timing breakdown:
 Section |  min time  |  avg time  |  max time  |%varavg| %total
 ---------------------------------------------------------------
-Pair    | 0.05182    | 0.05182    | 0.05182    |   0.0 | 66.76
-Neigh   | 0.0078088  | 0.0078088  | 0.0078088  |   0.0 | 10.06
-Comm    | 0.0029287  | 0.0029287  | 0.0029287  |   0.0 |  3.77
-Output  | 0.0065626  | 0.0065626  | 0.0065626  |   0.0 |  8.46
-Modify  | 0.0075913  | 0.0075913  | 0.0075913  |   0.0 |  9.78
-Other   |            | 0.0009055  |            |       |  1.17
+Pair    | 0.060631   | 0.060631   | 0.060631   |   0.0 | 65.20
+Neigh   | 0.0081522  | 0.0081522  | 0.0081522  |   0.0 |  8.77
+Comm    | 0.0038173  | 0.0038173  | 0.0038173  |   0.0 |  4.11
+Output  | 0.0094537  | 0.0094537  | 0.0094537  |   0.0 | 10.17
+Modify  | 0.0096582  | 0.0096582  | 0.0096582  |   0.0 | 10.39
+Other   |            | 0.001273   |            |       |  1.37
 
 Nlocal:            108 ave         108 max         108 min
 Histogram: 1 0 0 0 0 0 0 0 0 0
@@ -247,4 +250,5 @@ Total # of neighbors = 3703
 Ave neighs/atom = 34.287037
 Neighbor list builds = 68
 Dangerous builds = 0
+
 Total wall time: 0:00:00
